@@ -1,5 +1,6 @@
 require 'rspec/core/formatters/base_formatter'
 require 'ci/reporter/rspec2/failure'
+require 'ci/reporter/rspec2/testcase'
 
 module CI::Reporter
   module RSpec2
@@ -15,7 +16,7 @@ module CI::Reporter
       end
 
       def example_started(name_or_example)
-        spec = TestCase.new
+        spec = TestCase.new(name_or_example)
         @suite.testcases << spec
         spec.start
       end
